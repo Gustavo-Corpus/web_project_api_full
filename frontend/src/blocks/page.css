@@ -1,0 +1,23 @@
+.page {
+  min-height: 100dvh;
+  background-color: #000;
+  font-family: "Inter", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0 15.62vw 0;
+  color: #fff;
+  font-size: 1.25vw;
+}
+
+@media screen and (max-width: 768px) {
+  .page {
+    font-size: 1.3vw;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .page {
+    font-size: 2.5vw;
+    padding: 8.75vw 5.93vw 11.25vw;
+  }
+}

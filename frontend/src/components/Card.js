@@ -1,0 +1,60 @@
+import React, { useContext } from 'react';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+
+function Card({ card, onCardClick, onCardLike, onCardDelete }) {
+  const currentUser = useContext(CurrentUserContext);
+
+  // Verificar si el usuario actual es el propietario de la tarjeta
+  const isOwn = card.owner._id === currentUser._id;
+
+  // Verificar si el usuario actual le dio like a la tarjeta
+  const isLiked = card.likes.some(i => i._id === currentUser._id);
+
+  // Generar clase para el botón de like
+  const cardLikeButtonClassName = `element__like-button ${
+    isLiked ? 'element__like-button_active' : ''
+  }`;
+
+  function handleClick() {
+    onCardClick(card);
+  }
+
+  function handleLikeClick() {
+    onCardLike(card);
+  }
+
+  function handleDeleteClick() {
+    onCardDelete(card);
+  }
+
+  return (
+    <article className="element">
+      {isOwn && (
+        <button
+          type="button"
+          className="element__delete-button"
+          onClick={handleDeleteClick}
+        />
+      )}
+      <img
+        src={card.link}
+        alt={card.name}
+        className="element__image"
+        onClick={handleClick}
+      />
+      <div className="element__info">
+        <h2 className="element__title">{card.name}</h2>
+        <div className="element__like-container">
+          <button
+            type="button"
+            className={cardLikeButtonClassName}
+            onClick={handleLikeClick}
+          />
+          <span className="element__like-count">{card.likes.length}</span>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export default Card;
