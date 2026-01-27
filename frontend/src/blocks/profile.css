@@ -11,12 +11,38 @@
 }
 
 .profile__avatar {
-  grid-area: image;
   width: 11.71vw;
   height: 11.71vw;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.profile__avatar-container {
+  position: relative;
+  grid-area: image;
   margin: -1.64vw 2.34vw -1.64vw 0px;
+}
+
+.profile__avatar-edit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 11.71vw;
+  height: 11.71vw;
+  background: rgba(0, 0, 0, 0.8);
+  background-image: url("../images/Edit_Button.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 2.6vw;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.profile__avatar-edit:hover {
+  opacity: 1;
 }
 
 .profile__info-title {
@@ -45,6 +71,9 @@
 .profile__edit-button {
   grid-area: edit;
   background: none;
+  background-image: url("../images/Edit_Button.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
   border: none;
   align-self: baseline;
   width: 1.87vw;
@@ -53,7 +82,11 @@
   padding: 0;
 }
 
-.button-add {
+.profile__edit-button:hover {
+  opacity: 0.6;
+}
+
+.profile__add-button {
   grid-area: add;
   background: none;
   background-image: url("../images/Add_Button.svg");
@@ -66,7 +99,7 @@
   cursor: pointer;
 }
 
-.button-add:hover {
+.profile__add-button:hover {
   opacity: 0.6;
 }
 
@@ -117,7 +150,7 @@
     width: 5.6vw;
     justify-self: baseline;
   }
-  .button-add {
+  .profile__add-button {
     justify-self: center;
     background-image: url("../images/Add_Button_large.svg");
     width: 100%;
