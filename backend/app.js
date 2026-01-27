@@ -2,7 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const auth = require("./middlewares/auth");
 const app = express();
-const PORT = process.env.PORT || 3001;
+require('dotenv').config();
+const PORT = process.env.PORT || 3000;
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { errors } = require('celebrate');
 const cors = require("cors");
@@ -52,13 +53,13 @@ app.get('/crash-test', () => {
 });
 
 app.use("/", authRouter);
-app.use("/", authRouter);
 app.use(auth);
 app.use("/users", usersRouter);
 app.use("/cards", cardsRouter);
 
 // Conexión a Mongo
-const MONGO_URI = "mongodb://127.0.0.1:27017/aroundtheusdb";
+const MONGO_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/aroundtheusdb";
+
 mongoose
   .connect(MONGO_URI)
   .then(() => {
