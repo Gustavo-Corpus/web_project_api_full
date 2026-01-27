@@ -58,7 +58,14 @@ module.exports.updateUser = async (req, res) => {
 
 module.exports.updateAvatar = async (req, res) => {
   try {
+    console.log('📸 Actualizando avatar...');
+    console.log('Body recibido:', req.body);
+    console.log('User ID:', req.user._id);
+    
     const {avatar } = req.body;
+    
+    console.log('Avatar extraído:', avatar);
+    
     const updatedUser = await User.findByIdAndUpdate(
       req.user._id,
       { avatar },

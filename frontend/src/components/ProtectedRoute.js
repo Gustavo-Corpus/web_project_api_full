@@ -1,8 +1,8 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-function ProtectedRoute({ children, loggedIn }) {
-  return loggedIn ? children : <Navigate to="/signin" />;
+function ProtectedRoute({ children, isLoggedIn }) {
+  return isLoggedIn ? children : <Navigate to="/signin" replace />;
 }
 
 export default ProtectedRoute;

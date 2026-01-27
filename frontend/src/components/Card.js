@@ -4,11 +4,10 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
 
-  // Verificar si el usuario actual es el propietario de la tarjeta
-  const isOwn = card.owner._id === currentUser._id;
+  const isOwn = String(card.owner?._id || card.owner) === String(currentUser._id);
 
   // Verificar si el usuario actual le dio like a la tarjeta
-  const isLiked = card.likes.some(i => i._id === currentUser._id);
+const isLiked = card.likes.some(i => String(i._id || i) === String(currentUser._id));
 
   // Generar clase para el botón de like
   const cardLikeButtonClassName = `element__like-button ${
@@ -20,8 +19,8 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   }
 
   function handleLikeClick() {
-    onCardLike(card);
-  }
+  onCardLike(card);
+}
 
   function handleDeleteClick() {
     onCardDelete(card);

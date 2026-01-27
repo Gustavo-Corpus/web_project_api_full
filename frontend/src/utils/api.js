@@ -49,12 +49,12 @@ class Api {
     }).then(this._checkResponse);
   }
 
-  changeLikeCardStatus(cardId, isLiked) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: isLiked ? "DELETE" : "PUT",
-      headers: this._headers
-    }).then(this._checkResponse);
-  }
+ changeLikeCardStatus(cardId, isLiked) {
+  return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+    method: isLiked ? "DELETE" : "PUT",
+    headers: this._headers
+  }).then(this._checkResponse);
+}
 
   setUserAvatar(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
@@ -69,14 +69,17 @@ class Api {
   getAppInfo() {
     return Promise.all([this.getUserInfo(), this.getCardList()]);
   }
+
+  setToken(token) {
+    this._headers.authorization = `Bearer ${token}`;
+  }
 }
 
 // Crear una instancia de Api con la configuración correcta
 const api = new Api({
-  baseUrl: "https://around-api.es.tripleten-services.com/v1",
+  baseUrl: "http://localhost:3001",
   headers: {
-    authorization: "002abf4d-3eb5-4d3d-b6e5-f294e40cd739",
-    "Content-Type": "application/json",
+  "Content-Type": "application/json",
   },
 });
 

@@ -2,19 +2,17 @@ const express = require("express");
 const mongoose = require("mongoose");
 const auth = require("./middlewares/auth");
 const app = express();
-const PORT = process.env.PORT || 3000;
-const { requestLogger, errorLogger } = require("./middlewares/logger");
+const PORT = process.env.PORT || 3001;
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { errors } = require('celebrate');
 const cors = require("cors");
 const usersRouter = require("./routes/users");
 const cardsRouter = require("./routes/cards");
 const authRouter = require("./routes/auth");
 const allowedOrigins = [
-  'https://api.irlanda.chickenkiller.com',
-  'https://irlanda.chickenkiller.com',
-  'www.irlanda.chickenkiller.com', 
-  'http://localhost:3000/',
-  'http://irlanda.chickenkiller.com',
-'http://api.irlanda.chickenkiller.com',
+  'http://localhost:3000',
+  'http://localhost:5173',
+  'http://localhost:3001',
 ]
 
 app.use((req, res, next) => {
@@ -46,13 +44,21 @@ app.use(express.json());
 
 
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('El servidor va a caer');
+  }, 0);
+});
+
+app.use("/", authRouter);
 app.use("/", authRouter);
 app.use(auth);
 app.use("/users", usersRouter);
 app.use("/cards", cardsRouter);
 
 // Conexión a Mongo
-const MONGO_URI = "mongodb://127.0.0.1:27017/aroundb19";
+const MONGO_URI = "mongodb://127.0.0.1:27017/aroundtheusdb";
 mongoose
   .connect(MONGO_URI)
   .then(() => {
@@ -63,11 +69,15 @@ mongoose
     process.exit(1);
   });
 
+// Logger de errores
 app.use(errorLogger);
-/*app.use(errors());*/
+
+// Manejador de errores de Celebrate
+app.use(errors());
 
 // Middleware de errores centralizado
-// app.use(errorHandler);
+app.use(require('./middlewares/error'));
+
 app.listen(PORT, () => {
   console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
 });
