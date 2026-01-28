@@ -61,24 +61,30 @@ Este proyecto es la culminación del bootcamp de Desarrollo Web de TripleTen, in
   
 ## 📁 Estructura del Proyecto  
   
-
 web_project_api_full/
-├── backend/ # Servidor Node.js + Express
-│ ├── controllers/ # Lógica de negocio
-│ ├── middlewares/ # Auth, logging, errores
-│ ├── models/ # Esquemas de Mongoose
-│ ├── routes/ # Rutas de la API
-│ ├── utils/ # Validadores y utilidades
-│ ├── app.js # Configuración de Express
-│ └── .env # Variables de entorno (no en Git)
-└── frontend/ # Aplicación React
-├── public/ # Archivos estáticos
-├── src/
-│ ├── components/ # Componentes de React
-│ ├── contexts/ # Context API
-│ ├── utils/ # API y utilidades
-│ └── blocks/ # Estilos CSS
-└── build/ # Build de producción
+    ├── README.md
+    ├── backend/
+    │   ├── app.js
+    │   ├── package.json
+    │   ├── controllers/
+    │   ├── middlewares/
+    │   ├── models/
+    │   ├── routes/
+    │   └── utils/
+    └── frontend/
+        ├── package.json
+        ├── .editorconfig
+        ├── .prettierignore
+        ├── public/
+        └── src/
+            ├── App.css
+            ├── index.css
+            ├── index.js
+            ├── blocks/
+            ├── components/
+            ├── contexts/
+            ├── pages/
+            └── utils/
 
 👨‍💻 Autor
 

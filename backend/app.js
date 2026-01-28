@@ -18,7 +18,7 @@ const allowedOrigins = [
   'https://aroundtheus.ignorelist.com',
   'http://api.aroundtheus.ignorelist.com',
   'https://api.aroundtheus.ignorelist.com',
-];
+];  
 
 app.use((req, res, next) => {
   const { origin } = req.headers
