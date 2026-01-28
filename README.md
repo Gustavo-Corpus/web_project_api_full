@@ -2,8 +2,8 @@
   
 ## 🌐 Enlace al Proyecto  
   
-**Frontend:** http://aroundtheus.twilightparadox.com  
-**Backend API:** http://api.aroundtheus.strangled.net
+**Frontend:** https://aroundtheus.twilightparadox.com  
+**Backend API:** https://api.aroundtheus.strangled.net
   
 ## 📖 Descripción del Proyecto  
   

@@ -76,7 +76,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "http://api.aroundtheus.strangled.net",
+  baseUrl: "https://api.aroundtheus.strangled.net",
   headers: {
   "Content-Type": "application/json",
   },

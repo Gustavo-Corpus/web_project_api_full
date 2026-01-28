@@ -1,4 +1,4 @@
-const BASE_URL = 'http://api.aroundtheus.strangled.net';
+const BASE_URL = 'https://api.aroundtheus.strangled.net';
 
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
