@@ -58,33 +58,6 @@ Este proyecto es la culminación del bootcamp de Desarrollo Web de TripleTen, in
 - **nginx** - Servidor web y proxy inverso  
 - **Google Cloud** - Hosting del servidor  
 - **Let's Encrypt** - Certificados SSL gratuitos  
-  
-## 📁 Estructura del Proyecto  
-  
-web_project_api_full/
-    ├── README.md
-    ├── backend/
-    │   ├── app.js
-    │   ├── package.json
-    │   ├── controllers/
-    │   ├── middlewares/
-    │   ├── models/
-    │   ├── routes/
-    │   └── utils/
-    └── frontend/
-        ├── package.json
-        ├── .editorconfig
-        ├── .prettierignore
-        ├── public/
-        └── src/
-            ├── App.css
-            ├── index.css
-            ├── index.js
-            ├── blocks/
-            ├── components/
-            ├── contexts/
-            ├── pages/
-            └── utils/
 
 👨‍💻 Autor
 
