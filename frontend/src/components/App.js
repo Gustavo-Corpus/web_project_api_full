@@ -29,10 +29,10 @@ function App() {
   useEffect(() => {
   const jwt = localStorage.getItem('jwt');
   if (jwt) {
+    api.setToken(jwt);
     auth.checkToken(jwt)
       .then((res) => {
         if (res.email) {
-          api.setToken(jwt);
           setEmail(res.email);
           setIsLoggedIn(true);
         }
@@ -140,21 +140,22 @@ const handleAddPlaceSubmit = (cardData) => {
 };
 
   const handleLogin = (email, password) => {
-    auth.authorize(email, password)
-      .then((data) => {
-        if (data.token) {
-          api.setToken(data.token);
-          setEmail(email);
-          setIsLoggedIn(true);
-          navigate('/');
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsSuccess(false);
-        setIsInfoTooltipOpen(true);
-      });
-  };
+  auth.authorize(email, password)
+    .then((data) => {
+      if (data.token) {
+        localStorage.setItem('jwt', data.token);
+        api.setToken(data.token);
+        setEmail(email);
+        setIsLoggedIn(true);
+        navigate('/');
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      setIsSuccess(false);
+      setIsInfoTooltipOpen(true);
+    });
+};
 
   const handleRegister = (email, password) => {
   auth.register(email, password)
