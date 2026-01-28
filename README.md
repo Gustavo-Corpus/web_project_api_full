@@ -2,8 +2,8 @@
   
 ## 🌐 Enlace al Proyecto  
   
-**Frontend:** http://aroundtheus.ignorelist.com  
-**Backend API:** http://api.aroundtheus.ignorelist.com 
+**Frontend:** http://aroundtheus.twilightparadox.com  
+**Backend API:** http://api.aroundtheus.strangled.net
   
 ## 📖 Descripción del Proyecto  
   

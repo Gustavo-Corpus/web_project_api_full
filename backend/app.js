@@ -14,10 +14,10 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5173',
   'http://localhost:3001',
-  'http://aroundtheus.ignorelist.com',
-  'https://aroundtheus.ignorelist.com',
-  'http://api.aroundtheus.ignorelist.com',
-  'https://api.aroundtheus.ignorelist.com',
+  'http://aroundtheus.twilightparadox.com',
+  'https://aroundtheus.twilightparadox.com',
+  'http://api.aroundtheus.strangled.net',
+  'https://api.aroundtheus.strangled.net',
 ];  
 
 app.use((req, res, next) => {
