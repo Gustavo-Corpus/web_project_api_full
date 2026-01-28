@@ -23,23 +23,29 @@ const createCard = async (req, res) => {
   }
 };
 
-const deleteCard = async (req, res) => {
+const deleteCard = async (req, res, next) => {
   try {
     const { cardId } = req.params;
-    const card = await Card.findByIdAndDelete(cardId).orFail(() => {
+    const card = await Card.findById(cardId).orFail(() => {
       const error = new Error('Tarjeta no encontrada');
       error.statusCode = 404;
       throw error;
     });
+
+    if (card.owner.toString() !== req.user._id) {
+      const error = new Error('No tienes permiso para eliminar esta tarjeta');
+      error.statusCode = 403;
+      throw error;
+    }
+
+    await Card.findByIdAndDelete(cardId);
     return res.status(200).json({ message: 'Tarjeta eliminada correctamente', card });
   } catch (err) {
     if (err.name === 'CastError') {
-      return res.status(400).json({ message: 'ID de tarjeta inválido' });
+      err.statusCode = 400;
+      err.message = 'ID de tarjeta inválido';
     }
-    if (err.statusCode === 404) {
-      return res.status(404).json({ message: 'Tarjeta no encontrada' });
-    }
-    return res.status(500).json({ message: 'Error del servidor al eliminar la tarjeta' });
+    return next(err);
   }
 };
 

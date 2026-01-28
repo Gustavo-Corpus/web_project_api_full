@@ -2,8 +2,8 @@
   
 ## 🌐 Enlace al Proyecto  
   
-**Frontend:** [Pendiente de despliegue]    
-**Backend API:** [Pendiente de despliegue]  
+**Frontend:** http://aroundtheus.ignorelist.com  
+**Backend API:** http://api.aroundtheus.ignorelist.com 
   
 ## 📖 Descripción del Proyecto  
   
