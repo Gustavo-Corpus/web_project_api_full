@@ -6,10 +6,8 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
 
   const isOwn = String(card.owner?._id || card.owner) === String(currentUser._id);
 
-  // Verificar si el usuario actual le dio like a la tarjeta
 const isLiked = card.likes.some(i => String(i._id || i) === String(currentUser._id));
 
-  // Generar clase para el botón de like
   const cardLikeButtonClassName = `element__like-button ${
     isLiked ? 'element__like-button_active' : ''
   }`;

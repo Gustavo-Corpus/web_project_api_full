@@ -75,7 +75,6 @@ class Api {
   }
 }
 
-// Crear una instancia de Api con la configuración correcta
 const api = new Api({
   baseUrl: "http://localhost:3000",
   headers: {

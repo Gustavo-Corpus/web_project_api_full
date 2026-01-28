@@ -57,7 +57,6 @@ app.use(auth);
 app.use("/users", usersRouter);
 app.use("/cards", cardsRouter);
 
-// Conexión a Mongo
 const MONGO_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/aroundtheusdb";
 
 mongoose
@@ -70,13 +69,10 @@ mongoose
     process.exit(1);
   });
 
-// Logger de errores
 app.use(errorLogger);
 
-// Manejador de errores de Celebrate
 app.use(errors());
 
-// Middleware de errores centralizado
 app.use(require('./middlewares/error'));
 
 app.listen(PORT, () => {

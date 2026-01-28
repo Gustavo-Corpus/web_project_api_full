@@ -8,7 +8,6 @@ module.exports = (req, res, next) => {
     return res.status(403).send({ message: 'Autorización requerida.' });
   }
 
-  // Espera formato: "Bearer <token>"
   const token = authorization.replace('Bearer ', '');
 
   try {
@@ -16,7 +15,7 @@ module.exports = (req, res, next) => {
       token,
       NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'
     );
-    req.user = payload; // ✅ payload con {_id: ...}
+    req.user = payload;
     return next();
   } catch (err) {
     return res.status(403).send({ message: 'Token inválido o caducado.' });

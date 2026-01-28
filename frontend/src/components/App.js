@@ -31,9 +31,9 @@ function App() {
   if (jwt) {
     auth.checkToken(jwt)
       .then((res) => {
-        if (res.email) {  // ← CAMBIO: res.email en lugar de res.data
+        if (res.email) {
           api.setToken(jwt);
-          setEmail(res.email);  // ← CAMBIO: res.email en lugar de res.data.email
+          setEmail(res.email);
           setIsLoggedIn(true);
         }
       })

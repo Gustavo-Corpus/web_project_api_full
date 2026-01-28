@@ -47,7 +47,7 @@ const likeCard = async (req, res, next) => {
   try {
     const card = await Card.findByIdAndUpdate(
       req.params.cardId,
-      { $addToSet: { likes: req.user._id } }, // añade solo si no existe
+      { $addToSet: { likes: req.user._id } },
       { new: true }
     );
     if (!card) {
