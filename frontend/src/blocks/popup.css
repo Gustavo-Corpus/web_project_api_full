@@ -180,7 +180,7 @@
 
 .popup_type_info {
   transition: visibility 0s linear 0.5s, opacity 0.5s linear;
-  display: none ;
+  display: flex ;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);

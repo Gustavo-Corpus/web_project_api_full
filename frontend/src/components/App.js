@@ -21,7 +21,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState('');
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [isAppReady, setIsAppReady] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -51,9 +52,11 @@ function App() {
       })
       .finally(() => {
         setIsLoading(false);
+        setIsAppReady(true);
       });
   } else {
-    setIsLoading(false);
+  setIsLoading(false);
+  setIsAppReady(true);
   }
 }, []);
 
@@ -303,11 +306,13 @@ const handleAddPlaceSubmit = (cardData) => {
   />
 </PopupWithForm>
 
-        <InfoTooltip
-          isOpen={isInfoTooltipOpen}
-          onClose={closeAllPopups}
-          isSuccess={isSuccess}
-        />
+        {isAppReady && isInfoTooltipOpen && (
+          <InfoTooltip
+            isOpen={isInfoTooltipOpen}
+            onClose={closeAllPopups}
+            isSuccess={isSuccess}
+          />
+        )}
 
         {selectedCard && (
   <div className={`popup popup_type_image ${selectedCard ? 'popup_opened' : ''}`}>
