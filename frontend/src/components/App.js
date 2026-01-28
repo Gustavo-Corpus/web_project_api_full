@@ -35,6 +35,13 @@ function App() {
         if (res.email) {
           setEmail(res.email);
           setIsLoggedIn(true);
+          return api.getAppInfo();
+        }
+      })
+      .then(([userData, cardsData]) => {
+        if (userData && cardsData) {
+          setCurrentUser(userData);
+          setCards(cardsData);
         }
       })
       .catch((err) => {
@@ -49,19 +56,6 @@ function App() {
     setIsLoading(false);
   }
 }, []);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      api.getAppInfo()
-        .then(([userData, cardsData]) => {
-          setCurrentUser(userData);
-          setCards(cardsData);
-        })
-        .catch((err) => {
-          console.log('Error loading app data:', err);
-        });
-    }
-  }, [isLoggedIn]);
 
   const handleEditProfileClick = () => {
     setIsEditProfilePopupOpen(true);
