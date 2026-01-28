@@ -136,7 +136,7 @@ const handleAddPlaceSubmit = (cardData) => {
     });
 };
 
-  const handleLogin = (email, password) => {
+const handleLogin = (email, password) => {
   auth.authorize(email, password)
     .then((data) => {
       if (data.token) {
@@ -144,8 +144,16 @@ const handleAddPlaceSubmit = (cardData) => {
         api.setToken(data.token);
         setEmail(email);
         setIsLoggedIn(true);
-        navigate('/');
+
+        return api.getAppInfo();
       }
+    })
+    .then(([userData, cardsData]) => {
+      if (userData && cardsData) {
+        setCurrentUser(userData);
+        setCards(cardsData);
+      }
+      navigate('/');
     })
     .catch((err) => {
       console.log(err);
@@ -177,6 +185,8 @@ const handleAddPlaceSubmit = (cardData) => {
     localStorage.removeItem('jwt');
     setIsLoggedIn(false);
     setEmail('');
+    setCurrentUser({});
+    setCards([]);
     navigate('/signin');
   };
 
