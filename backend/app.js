@@ -1,24 +1,28 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const auth = require("./middlewares/auth");
-const app = express();
-require('dotenv').config();
-const PORT = process.env.PORT || 3000;
-const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { errors } = require('celebrate');
-const cors = require("cors");
-const usersRouter = require("./routes/users");
-const cardsRouter = require("./routes/cards");
-const authRouter = require("./routes/auth");
-const allowedOrigins = [
-  'http://localhost:3000',
-  'http://localhost:5173',
-  'http://localhost:3001',
-  'http://aroundtheus.twilightparadox.com',
-  'https://aroundtheus.twilightparadox.com',
-  'http://api.aroundtheus.strangled.net',
-  'https://api.aroundtheus.strangled.net',
-];  
+const express = require('express');  
+const mongoose = require('mongoose');   
+const { errors } = require('celebrate');  
+const cors = require('cors');  
+require('dotenv').config();  
+  
+const { requestLogger, errorLogger } = require('./middlewares/logger');  
+const auth = require('./middlewares/auth');  
+const usersRouter = require('./routes/users');  
+const cardsRouter = require('./routes/cards');  
+const authRouter = require('./routes/auth');  
+  
+const app = express();  
+const PORT = process.env.PORT || 3000;  
+  
+const allowedOrigins = [  
+  'http://localhost:3000',  
+  'http://localhost:3000',  
+  'http://localhost:5173',  
+  'http://localhost:3001',  
+  'http://aroundtheus.twilightparadox.com',  
+  'https://aroundtheus.twilightparadox.com',  
+  'http://api.aroundtheus.strangled.net',  
+  'https://api.aroundtheus.strangled.net',  
+]; 
 
 app.use((req, res, next) => {
   const { origin } = req.headers
@@ -47,6 +51,10 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+app.use(cors({  
+  origin: allowedOrigins,  
+  credentials: true,  
+}));
 
 app.use(requestLogger);
 
