@@ -1,13 +1,12 @@
 .profile {
   display: grid;
-  grid-template-columns: auto auto 1fr 2fr;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: auto auto 1fr;
   grid-template-areas:
-    "image title edit add"
-    "image subtitle . add";
+    "image info add";
   padding: 1.64vw 0;
   align-items: self-start;
   margin-bottom: 3.9vw;
+  gap: 2.3vw;
 }
 
 .profile__avatar {
@@ -20,7 +19,6 @@
 .profile__avatar-container {
   position: relative;
   grid-area: image;
-  margin: -1.64vw 2.34vw -1.64vw 0px;
 }
 
 .profile__avatar-edit {
@@ -45,27 +43,37 @@
   opacity: 1;
 }
 
-.profile__info-title {
-  grid-area: title;
-  margin: 0 1.4vw 1.25vw 0;
-  max-width: 35vw;
-  max-height: 7vw;
-  align-self: baseline;
+.profile__info {
+  grid-area: info;
+  display: grid;
+  align-self: center;
+  grid-template-areas:
+    "name edit"
+    "about .";
+  max-width: 41vw;
+  gap: 1.6vw;
+}
+
+.profile__name {
+  grid-area: name;
+  margin: 0;
   font-size: 2.62em;
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.profile__info-subtitle {
-  grid-area: subtitle;
+.profile__about {
+  grid-area: about;
   margin: 0;
-  max-width: 35vw;
-  max-height: 3.125vw;
   font-weight: 400;
   font-size: 1.12em;
+  line-height: 1.2;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .profile__edit-button {
@@ -75,11 +83,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   border: none;
-  align-self: baseline;
+  align-self: center;
   width: 1.87vw;
   height: 1.87vw;
   cursor: pointer;
-  padding: 0;
+  margin-top: 25%;
 }
 
 .profile__edit-button:hover {
@@ -117,22 +125,36 @@
 
 @media screen and (max-width: 544px) {
   .profile {
-    grid-template-columns: 1fr 1fr auto auto 1fr;
-    grid-template-rows: repeat(4, auto);
+    grid-template-columns: 1fr;
     grid-template-areas:
-      ". . image . ."
-      ". . title edit ."
-      ". . subtitle . ."
-      "add add add add add";
-    padding: 0;
+      "image"
+      "info"
+      "edit"
+      "add";
     justify-items: center;
-    margin-bottom: 11.25vw;
+    text-align: center;
+    margin: 0 0 36px 0;
   }
-  .profile__avatar {
+
+   .profile__avatar {
     width: 33.33vw;
     height: 33.33vw;
     margin: 0 0 30px 0;
   }
+
+  .profile__info {
+    grid-template-columns: 2fr 2fr auto;
+    grid-template-rows: auto 2fr;
+  grid-template-areas:
+    "name name edit"
+    "about about about";
+  max-width: none;
+  }
+
+  .profile__about {
+    font-size: 1.6em;
+  }
+
   .profile__info-title {
     margin-bottom: 14px;
     text-align: center;
@@ -148,8 +170,9 @@
   }
   .profile__edit-button {
     width: 5.6vw;
-    justify-self: baseline;
+    height: 5.6vw;
   }
+
   .profile__add-button {
     justify-self: center;
     background-image: url("../images/Add_Button_large.svg");

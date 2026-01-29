@@ -1,11 +1,22 @@
+/* ========================================
+   HEADER - Desktop (por defecto)
+   ======================================== */
+
 .header {
   width: 100%;
   margin: 0 auto;
-  padding: 45px 0 41px;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 45px 0 41px;
+}
+
+.header__bar {
+  display: flex;
+  align-items: center;
+  padding: 0;
 }
 
 .header__logo {
@@ -53,13 +64,131 @@
   opacity: 0.6;
 }
 
+.header__menu-btn {
+  display: none;
+}
+
+
+/* ========================================
+   TABLET - 920px
+   ======================================== */
+
 @media screen and (max-width: 920px) {
   .header {
-    padding: 28px 27px 31.6px;
+    flex-direction: column-reverse; /* Auth arriba, logo abajo */
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .header__bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 30px;
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+    box-sizing: border-box;
   }
 
   .header__logo {
     max-width: 126px;
     height: 24px;
+  }
+
+  .header__auth-container {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  }
+
+  .header_opened .header__auth-container {
+    display: flex;
+  }
+
+  .header__user-email {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+  }
+
+  .header__logout {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .header__auth-link {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .header__menu-btn {
+    display: block;
+    width: 24px;
+    height: 21px;
+    background: url('../images/menu.svg') center/contain no-repeat;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .header__menu-btn:hover {
+    opacity: 0.6;
+  }
+
+  .header__menu-btn_close {
+    background-image: url('../images/close.svg');
+    width: 20px;
+    height: 20px;
+  }
+}
+
+
+/* ========================================
+   MOBILE - 540px
+   ======================================== */
+
+@media screen and (max-width: 540px) {
+  .header__bar {
+    padding: 28px 27px;
+  }
+
+  .header__logo {
+    max-width: 110px;
+    height: 21px;
+  }
+
+  .header__auth-container {
+    padding: 36px 0;
+    gap: 16px;
+  }
+
+  .header__user-email {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .header__logout {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .header__auth-link {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .header__menu-btn {
+    width: 22px;
+    height: 19px;
+  }
+
+  .header__menu-btn_close {
+    width: 18px;
+    height: 18px;
   }
 }

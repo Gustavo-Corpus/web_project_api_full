@@ -79,10 +79,13 @@
   opacity: 0.5;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 940px){
   .elements {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media screen and (max-width: 768px) {
   .elements__item {
     height: 41vw;
   }
