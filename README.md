@@ -11,6 +11,9 @@ Around The U.S. es una aplicación web interactiva que permite a los usuarios co
   
 Este proyecto es la culminación del bootcamp de Desarrollo Web de TripleTen, integrando frontend y backend en una aplicación full-stack completa.  
   
+## Previsualización
+![Previsualización](./frontend/src/images/gif.gif)
+
 ## ✨ Funcionalidades  
   
 - ✅ **Registro y autenticación de usuarios** con JWT  
