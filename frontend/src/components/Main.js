@@ -20,7 +20,6 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, cards, onC
           />
         </div>
         <div className="profile__info">
-          <div className="profile__name-container">
             <h1 className="profile__name">{currentUser.name}</h1>
             <p className="profile__about">{currentUser.about}</p>
             <button
@@ -28,7 +27,6 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, cards, onC
               className="profile__edit-button"
               onClick={onEditProfile}
             />
-          </div>
         </div>
         <button
           type="button"
